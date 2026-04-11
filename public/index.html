@@ -1,1 +1,68 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CMS Ultra - Unified Orchestration</title>
+  <link rel="stylesheet" href="/design-system.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  
+  <script type="systemjs-importmap">
+    {
+      "imports": {
+        "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.3/lib/system/single-spa.min.js",
+        "react": "https://cdn.jsdelivr.net/npm/react@17.0.1/umd/react.production.min.js",
+        "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@17.0.1/umd/react-dom.production.min.js",
+        "vue": "https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js",
+        "cms-react-editorial": "http://localhost:8081/main.js",
+        "cms-vue-media": "http://localhost:8082/main.js",
+        "cms-svelte-collab": "http://localhost:8083/main.js",
+        "cms-angular-auth": "http://localhost:8084/main.js"
+      }
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/system.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/extras/amd.min.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div style="padding: 2rem; border-bottom: 1px solid var(--border);">
+        <h1 class="vibrant-text" style="font-size: 1.5rem;">CMS Ultra</h1>
+        <p style="font-size: 0.75rem; color: var(--text-muted);">Microfrontend Powerhouse</p>
+      </div>
+      <nav style="display: flex; flex-direction: column; gap: 0.5rem; padding: 1.5rem;">
+        <a href="/editorial" class="glass-btn">
+          <span>📝</span> Editorial
+        </a>
+        <a href="/media-library" class="glass-btn">
+          <span>🖼️</span> Media Library
+        </a>
+        <a href="/role-access" class="glass-btn">
+          <span>🔐</span> Auth & Roles
+        </a>
+        <a href="/real-time-editor" class="glass-btn">
+          <span>💬</span> Collaboration
+        </a>
+      </nav>
+      <div style="margin-top: auto; padding: 1.5rem; border-top: 1px solid var(--border);">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; font-weight: bold;">A</div>
+          <div>
+            <p style="font-size: 0.875rem; font-weight: 500;">Admin User</p>
+            <p style="font-size: 0.75rem; color: var(--text-muted);">Administrator</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <main class="main-content" id="single-spa-container">
+    </main>
+  </div>
+  <script>
+    System.import('/index.js');
+  </script>
+</body>
+</html>
