@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "rewrites": [
+    { "source": "/editorial/(.*)", "destination": "/index.html" },
+    { "source": "/media-library/(.*)", "destination": "/index.html" },
+    { "source": "/role-access/(.*)", "destination": "/index.html" },
+    { "source": "/real-time-editor/(.*)", "destination": "/index.html" },
+    { "source": "/(.*)", "destination": "/$1" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    }
+  ]
+}
