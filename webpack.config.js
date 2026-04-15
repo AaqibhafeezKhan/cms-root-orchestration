@@ -31,6 +31,11 @@ module.exports = {
       inject: false,
       filename: 'index.html',
     }),
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+      inject: false,
+      filename: '404.html',
+    }),
   ],
   devServer: {
     historyApiFallback: true,

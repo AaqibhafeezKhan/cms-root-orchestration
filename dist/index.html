@@ -1,1 +1,81 @@
-<head><script defer="defer" src="/bundle.js"></script></head>
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="CMS Ultra — A unified microfrontend orchestration shell combining Angular Auth, React Editorial, Svelte Collab and Vue Media into one cohesive platform"><title>CMS Ultra — Microfrontend Platform</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet"><link rel="stylesheet" href="/cms-root-orchestration/design-system.css"><script src="https://cdn.jsdelivr.net/npm/zone.js@0.11.3/dist/zone.min.js"></script><script type="systemjs-importmap">{
+      "imports": {
+        "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.3/lib/system/single-spa.min.js",
+        "single-spa-layout": "https://cdn.jsdelivr.net/npm/single-spa-layout@1.6.0/dist/system/single-spa-layout.min.js",
+        "react": "https://cdn.jsdelivr.net/npm/react@17.0.1/umd/react.production.min.js",
+        "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@17.0.1/umd/react-dom.production.min.js",
+        "single-spa-react": "https://cdn.jsdelivr.net/npm/single-spa-react@4.2.0/lib/umd/single-spa-react.min.js",
+        "vue": "https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.runtime.min.js",
+        "single-spa-vue": "https://cdn.jsdelivr.net/npm/single-spa-vue@2.3.0/dist/single-spa-vue.js",
+        "cms-react-editorial": "https://AaqibhafeezKhan.github.io/cms-react-editorial/main.js",
+        "cms-vue-media": "https://AaqibhafeezKhan.github.io/cms-vue-media/main.js",
+        "cms-svelte-collab": "https://AaqibhafeezKhan.github.io/cms-svelte-collab/main.js",
+        "cms-angular-auth": "https://AaqibhafeezKhan.github.io/cms-angular-auth/main.js"
+      }
+    }</script><script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/system.min.js"></script><script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/extras/amd.min.js"></script></head><body><div class="app-shell"><aside class="sidebar" id="app-sidebar"><div class="sidebar-logo"><div class="logo-icon">C</div><div><h1 class="logo-text">CMS Ultra</h1><p class="logo-sub">Microfrontend Platform</p></div></div><nav class="sidebar-nav"><p class="nav-label">Modules</p><a href="/cms-root-orchestration/auth" id="nav-auth" class="nav-item" onclick="setActive(this)"><span class="nav-icon">🔐</span><div class="nav-text"><span class="nav-title">Auth &amp; Roles</span> <span class="nav-sub">Angular 11</span></div></a><a href="/cms-root-orchestration/editorial" id="nav-editorial" class="nav-item" onclick="setActive(this)"><span class="nav-icon">📝</span><div class="nav-text"><span class="nav-title">Editorial</span> <span class="nav-sub">React 17</span></div></a><a href="/cms-root-orchestration/collab" id="nav-collab" class="nav-item" onclick="setActive(this)"><span class="nav-icon">💬</span><div class="nav-text"><span class="nav-title">Collaboration</span> <span class="nav-sub">Svelte 3</span></div></a><a href="/cms-root-orchestration/media" id="nav-media" class="nav-item" onclick="setActive(this)"><span class="nav-icon">🖼️</span><div class="nav-text"><span class="nav-title">Media Library</span> <span class="nav-sub">Vue 2</span></div></a></nav><div class="sidebar-footer"><div class="user-avatar">A</div><div><p class="user-name">Admin User</p><p class="user-role">Administrator</p></div><div class="status-dot"></div></div></aside><main class="main-content" id="single-spa-container"><div class="landing" id="landing-page"><div class="landing-hero"><div class="vibrant-text" id="welcome-message" style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem;">Platform Hub</div><h2 class="landing-title">Enterprise <span class="vibrant-text">Orchestration</span></h2><p class="landing-desc">Unified control center for Auth, Editorial, Collaboration, and Media management.</p></div><div id="session-status" style="margin-bottom: 3rem; text-align: center;"><div class="module-card" style="display: inline-flex; align-items: center; gap: 1rem; padding: 1rem 2rem;"><div id="session-dot" style="width: 10px; height: 10px; border-radius: 50%; background: #94a3b8;"></div><span id="session-text" style="font-weight: 600; font-size: 0.9rem; color: var(--text-muted);">Please sign in to access full features</span></div></div><div class="module-grid"><a href="/cms-root-orchestration/auth" class="module-card"><h3 class="module-title">Identity</h3><p class="module-desc">Role management and security orchestration layer.</p><span class="module-tag">Angular</span> </a><a href="/cms-root-orchestration/editorial" class="module-card"><h3 class="module-title">Editorial</h3><p class="module-desc">Dynamic content lifecycle and publishing toolset.</p><span class="module-tag">React</span> </a><a href="/cms-root-orchestration/collab" class="module-card"><h3 class="module-title">Collaboration</h3><p class="module-desc">Real-time team communication and activity tracking.</p><span class="module-tag">Svelte</span> </a><a href="/cms-root-orchestration/media" class="module-card"><h3 class="module-title">Media</h3><p class="module-desc">Digital asset repository and delivery network.</p><span class="module-tag">Vue</span></a></div></div></main></div><script>function setActive(el) {
+      if (!el) return;
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById('landing-page').style.display = 'none';
+      document.getElementById('single-spa-container').style.padding = '0';
+    }
+    
+    function setActiveById(id) {
+      setActive(document.getElementById(id));
+    }
+
+    // Session Monitoring
+    function updateSessionUI() {
+      const session = localStorage.getItem('cms_session');
+      const dot = document.getElementById('session-dot');
+      const text = document.getElementById('session-text');
+      const sideName = document.querySelector('.user-name');
+
+      if (session) {
+        const user = JSON.parse(session);
+        dot.style.background = '#10b981';
+        text.innerText = `Active Session: ${user.name} (${user.role})`;
+        sideName.innerText = user.name;
+      } else {
+        dot.style.background = '#94a3b8';
+        text.innerText = 'Please sign in to access full features';
+        sideName.innerText = 'Guest User';
+      }
+    }
+
+    window.addEventListener('cms:auth_change', updateSessionUI);
+    window.addEventListener('storage', updateSessionUI);
+
+    // Routing Logic to handle initial load and back/forward
+    function handleActiveNav() {
+      updateSessionUI();
+      const path = location.pathname;
+      const map = { 
+        '/cms-root-orchestration/auth': 'nav-auth', 
+        '/cms-root-orchestration/editorial': 'nav-editorial', 
+        '/cms-root-orchestration/collab': 'nav-collab', 
+        '/cms-root-orchestration/media': 'nav-media' 
+      };
+      
+      const matchedId = map[path];
+      if (matchedId) {
+        setActiveById(matchedId);
+      } else if (path === '/cms-root-orchestration/' || path === '/cms-root-orchestration') {
+        document.getElementById('landing-page').style.display = 'block';
+        document.getElementById('single-spa-container').style.padding = '3rem';
+        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+      }
+    }
+
+    window.addEventListener('popstate', handleActiveNav);
+    handleActiveNav();
+
+    // Intercept clicks for single-spa navigation
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a');
+      if (link && link.href.includes('/cms-root-orchestration/')) {
+        e.preventDefault();
+        history.pushState(null, '', link.href);
+        handleActiveNav();
+      }
+    });</script><script>System.import('/cms-root-orchestration/index.js');</script></body></html>
