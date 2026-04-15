@@ -23,7 +23,6 @@
       let matched = false;
       navItems.forEach(item => {
         const itemPath = new URL(item.href, location.origin).pathname;
-        // Exact match or sub-path match
         if (path === itemPath || (path.startsWith(itemPath) && itemPath !== '/cms-root-orchestration' && itemPath !== '/cms-root-orchestration/')) {
           item.classList.add('active');
           matched = true;
@@ -67,15 +66,11 @@
       }
     }
 
-    // Single-spa Navigation Interception
     window.addEventListener('single-spa:routing-event', syncSidebarUI);
     window.addEventListener('cms:auth_change', updateSessionUI);
     window.addEventListener('storage', updateSessionUI);
-    
-    // Initial Sync
     syncSidebarUI();
 
-    // Global click listener for SPA navigation
     document.addEventListener('click', (e) => {
       const link = e.target.closest('a');
       if (link && link.href && link.href.includes(location.origin + '/cms-root-orchestration')) {
