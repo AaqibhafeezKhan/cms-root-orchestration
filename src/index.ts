@@ -11,7 +11,8 @@ const applications = constructApplications({
 const layoutEngine = constructLayoutEngine({ 
   routes, 
   applications, 
-  active: true 
+  active: true,
+  htmlElement: document.getElementById('single-spa-container') || undefined
 });
 
 applications.forEach(registerApplication);
