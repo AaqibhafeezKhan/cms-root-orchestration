@@ -34,6 +34,9 @@
   <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/extras/amd.min.js"></script>
 </head>
 <body>
+  <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleMobileMenu()"></div>
+  <button class="mobile-nav-toggle" id="mobile-toggle" onclick="toggleMobileMenu()">☰</button>
+
   <div class="app-shell">
 
     <aside class="sidebar" id="app-sidebar">
@@ -214,9 +217,27 @@
       }
     }
 
-    window.addEventListener('single-spa:routing-event', syncSidebarUI);
+    // Mobile Menu Logic
+    function toggleMobileMenu() {
+      const sidebar = document.getElementById('app-sidebar');
+      const overlay = document.getElementById('sidebar-overlay');
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('active');
+    }
+
+    // Single-spa Navigation Interception
+    window.addEventListener('single-spa:routing-event', () => {
+      syncSidebarUI();
+      const sidebar = document.getElementById('app-sidebar');
+      const overlay = document.getElementById('sidebar-overlay');
+      if (sidebar) sidebar.classList.remove('open');
+      if (overlay) overlay.classList.remove('active');
+    });
+
     window.addEventListener('cms:auth_change', updateSessionUI);
     window.addEventListener('storage', updateSessionUI);
+    
+    // Initial Sync
     syncSidebarUI();
 
     document.addEventListener('click', (e) => {
