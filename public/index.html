@@ -18,15 +18,15 @@
       "imports": {
         "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.3/lib/system/single-spa.min.js",
         "single-spa-layout": "https://cdn.jsdelivr.net/npm/single-spa-layout@1.6.0/dist/system/single-spa-layout.min.js",
-        "react": "https://cdn.jsdelivr.net/npm/react@17.0.1/umd/react.production.min.js",
-        "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@17.0.1/umd/react-dom.production.min.js",
-        "single-spa-react": "https://cdn.jsdelivr.net/npm/single-spa-react@4.2.0/lib/umd/single-spa-react.min.js",
-        "vue": "https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.runtime.min.js",
-        "single-spa-vue": "https://cdn.jsdelivr.net/npm/single-spa-vue@2.3.0/dist/single-spa-vue.js",
-        "cms-react-editorial": "https://AaqibhafeezKhan.github.io/cms-react-editorial/main.js",
-        "cms-vue-media": "https://AaqibhafeezKhan.github.io/cms-vue-media/main.js",
-        "cms-svelte-collab": "https://AaqibhafeezKhan.github.io/cms-svelte-collab/main.js",
-        "cms-angular-auth": "https://AaqibhafeezKhan.github.io/cms-angular-auth/main.js"
+        "react": "https://cdn.jsdelivr.net/npm/react@17.0.2/umd/react.production.min.js",
+        "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@17.0.2/umd/react-dom.production.min.js",
+        "single-spa-react": "https://cdn.jsdelivr.net/npm/single-spa-react@4.5.1/lib/system/single-spa-react.min.js",
+        "vue": "https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js",
+        "single-spa-vue": "https://cdn.jsdelivr.net/npm/single-spa-vue@2.5.1/dist/system/single-spa-vue.min.js",
+        "cms-react-editorial": "https://aaqibhafeezkhan.github.io/cms-react-editorial/main.js",
+        "cms-vue-media": "https://aaqibhafeezkhan.github.io/cms-vue-media/main.js",
+        "cms-svelte-collab": "https://aaqibhafeezkhan.github.io/cms-svelte-collab/main.js",
+        "cms-angular-auth": "https://aaqibhafeezkhan.github.io/cms-angular-auth/main.js"
       }
     }
   </script>
@@ -137,18 +137,20 @@
 
   <template id="single-spa-layout">
     <single-spa-router base="/cms-root-orchestration">
-      <route path="auth">
-        <application name="cms-angular-auth"></application>
-      </route>
-      <route path="editorial">
-        <application name="cms-react-editorial"></application>
-      </route>
-      <route path="collab">
-        <application name="cms-svelte-collab"></application>
-      </route>
-      <route path="media">
-        <application name="cms-vue-media"></application>
-      </route>
+      <main>
+        <route path="auth">
+          <application name="cms-angular-auth"></application>
+        </route>
+        <route path="editorial">
+          <application name="cms-react-editorial"></application>
+        </route>
+        <route path="collab">
+          <application name="cms-svelte-collab"></application>
+        </route>
+        <route path="media">
+          <application name="cms-vue-media"></application>
+        </route>
+      </main>
     </single-spa-router>
   </template>
 
