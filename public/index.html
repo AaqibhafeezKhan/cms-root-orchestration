@@ -131,28 +131,28 @@
       </div>
 
       <!-- Microfrontend Mounting Point -->
-      <div id="single-spa-container"></div>
+      <div id="single-spa-container" style="padding: 0px; display: block;">
+        <template id="single-spa-layout">
+          <single-spa-router base="/cms-root-orchestration">
+            <main>
+              <route path="auth">
+                <application name="cms-angular-auth"></application>
+              </route>
+              <route path="editorial">
+                <application name="cms-react-editorial"></application>
+              </route>
+              <route path="collab">
+                <application name="cms-svelte-collab"></application>
+              </route>
+              <route path="media">
+                <application name="cms-vue-media"></application>
+              </route>
+            </main>
+          </single-spa-router>
+        </template>
+      </div>
     </main>
   </div>
-
-  <template id="single-spa-layout">
-    <single-spa-router base="/cms-root-orchestration">
-      <main>
-        <route path="auth">
-          <application name="cms-angular-auth"></application>
-        </route>
-        <route path="editorial">
-          <application name="cms-react-editorial"></application>
-        </route>
-        <route path="collab">
-          <application name="cms-svelte-collab"></application>
-        </route>
-        <route path="media">
-          <application name="cms-vue-media"></application>
-        </route>
-      </main>
-    </single-spa-router>
-  </template>
 
   <script>
     function setActive(el) {
