@@ -160,16 +160,39 @@
   </div>
 
   <script>
-    function setActive(el) {
-      if (!el) return;
-      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-      el.classList.add('active');
-      document.getElementById('landing-page').style.display = 'none';
-      document.getElementById('single-spa-container').style.padding = '0';
-    }
-    
-    function setActiveById(id) {
-      setActive(document.getElementById(id));
+    // Navigation Utility
+    function syncSidebarUI() {
+      updateSessionUI();
+      const path = location.pathname;
+      const navItems = document.querySelectorAll('.nav-item');
+      const landing = document.getElementById('landing-page');
+      const container = document.getElementById('single-spa-container');
+      
+      let matched = false;
+      navItems.forEach(item => {
+        const itemPath = new URL(item.href, location.origin).pathname;
+        if (path === itemPath || (path.startsWith(itemPath) && itemPath !== '/cms-root-orchestration/')) {
+          item.classList.add('active');
+          matched = true;
+        } else {
+          item.classList.remove('active');
+        }
+      });
+
+      if (matched) {
+        if (landing) landing.style.display = 'none';
+        if (container) {
+          container.style.display = 'block';
+          container.style.opacity = '0';
+          setTimeout(() => {
+            container.style.transition = 'opacity 0.4s ease';
+            container.style.opacity = '1';
+          }, 50);
+        }
+      } else {
+        if (landing) landing.style.display = 'block';
+        if (container) container.style.display = 'none';
+      }
     }
 
     // Session Monitoring
@@ -181,54 +204,32 @@
 
       if (session) {
         const user = JSON.parse(session);
-        dot.style.background = '#10b981';
-        text.innerText = `Active Session: ${user.name} (${user.role})`;
-        sideName.innerText = user.name;
+        if (dot) dot.style.background = '#10b981';
+        if (text) text.innerText = `Active Session: ${user.name} (${user.role})`;
+        if (sideName) sideName.innerText = user.name;
       } else {
-        dot.style.background = '#94a3b8';
-        text.innerText = 'Please sign in to access full features';
-        sideName.innerText = 'Guest User';
+        if (dot) dot.style.background = '#94a3b8';
+        if (text) text.innerText = 'Please sign in to access full features';
+        if (sideName) sideName.innerText = 'Guest User';
       }
     }
 
+    // Single-spa Navigation Interception
+    window.addEventListener('single-spa:routing-event', syncSidebarUI);
     window.addEventListener('cms:auth_change', updateSessionUI);
     window.addEventListener('storage', updateSessionUI);
+    
+    // Initial Sync
+    syncSidebarUI();
 
-    // Routing Logic to handle initial load and back/forward
-    function handleActiveNav() {
-      updateSessionUI();
-      const path = location.pathname;
-      const map = { 
-        '/cms-root-orchestration/auth': 'nav-auth', 
-        '/cms-root-orchestration/editorial': 'nav-editorial', 
-        '/cms-root-orchestration/collab': 'nav-collab', 
-        '/cms-root-orchestration/media': 'nav-media' 
-      };
-      
-      const matchedId = map[path];
-      if (matchedId) {
-        setActiveById(matchedId);
-        document.getElementById('landing-page').style.display = 'none';
-        document.getElementById('single-spa-container').style.display = 'block';
-      } else {
-        document.getElementById('landing-page').style.display = 'block';
-        document.getElementById('single-spa-container').style.display = 'none';
-        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-      }
-    }
-
-    window.addEventListener('popstate', handleActiveNav);
-    handleActiveNav();
-
-    // Intercept clicks for single-spa navigation
+    // Global click listener for SPA navigation
     document.addEventListener('click', (e) => {
       const link = e.target.closest('a');
-      if (link && link.href.includes('/cms-root-orchestration')) {
+      if (link && link.href && link.href.includes(location.origin + '/cms-root-orchestration')) {
         const url = new URL(link.href);
         if (url.origin === location.origin) {
           e.preventDefault();
           history.pushState(null, '', link.href);
-          handleActiveNav();
         }
       }
     });
