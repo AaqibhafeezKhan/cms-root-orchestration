@@ -11,10 +11,16 @@ const applications = constructApplications({
 const layoutEngine = constructLayoutEngine({ 
   routes, 
   applications, 
-  active: true,
-  htmlElement: document.getElementById('single-spa-container') || undefined
+  active: true 
 });
 
 applications.forEach(registerApplication);
 layoutEngine.activate();
+
+const singleSpaMain = document.querySelector('body > main');
+const container = document.getElementById('single-spa-container');
+if (singleSpaMain && container) {
+  container.appendChild(singleSpaMain);
+}
+
 start();
