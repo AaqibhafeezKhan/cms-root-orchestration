@@ -3,7 +3,7 @@ import { constructApplications, constructRoutes, constructLayoutEngine } from "s
 import layout from "./root-config";
 
 const layoutElement = document.getElementById('single-spa-layout') as HTMLTemplateElement;
-const routes = constructRoutes(layoutElement);
+const routes = constructRoutes(layoutElement as any);
 const applications = constructApplications({
   routes,
   loadApp: ({ name }: { name: string }) => System.import(name) as Promise<LifeCycles>
