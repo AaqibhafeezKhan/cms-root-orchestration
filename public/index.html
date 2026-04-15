@@ -37,7 +37,7 @@
   <div class="app-shell">
 
     <aside class="sidebar" id="app-sidebar">
-      <a href="/cms-root-orchestration/" class="sidebar-logo" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 1rem;">
+      <a href="/cms-root-orchestration/" class="sidebar-logo">
         <div class="logo-icon">C</div>
         <div>
           <h1 class="logo-text">CMS Ultra</h1>
@@ -47,28 +47,28 @@
 
       <nav class="sidebar-nav">
         <p class="nav-label">Modules</p>
-        <a href="/cms-root-orchestration/auth" id="nav-auth" class="nav-item" onclick="setActive(this)">
+        <a href="/cms-root-orchestration/auth" id="nav-auth" class="nav-item">
           <span class="nav-icon">🔐</span>
           <div class="nav-text">
             <span class="nav-title">Auth &amp; Roles</span>
             <span class="nav-sub">Angular 11</span>
           </div>
         </a>
-        <a href="/cms-root-orchestration/editorial" id="nav-editorial" class="nav-item" onclick="setActive(this)">
+        <a href="/cms-root-orchestration/editorial" id="nav-editorial" class="nav-item">
           <span class="nav-icon">📝</span>
           <div class="nav-text">
             <span class="nav-title">Editorial</span>
             <span class="nav-sub">React 17</span>
           </div>
         </a>
-        <a href="/cms-root-orchestration/collab" id="nav-collab" class="nav-item" onclick="setActive(this)">
+        <a href="/cms-root-orchestration/collab" id="nav-collab" class="nav-item">
           <span class="nav-icon">💬</span>
           <div class="nav-text">
             <span class="nav-title">Collaboration</span>
             <span class="nav-sub">Svelte 3</span>
           </div>
         </a>
-        <a href="/cms-root-orchestration/media" id="nav-media" class="nav-item" onclick="setActive(this)">
+        <a href="/cms-root-orchestration/media" id="nav-media" class="nav-item">
           <span class="nav-icon">🖼️</span>
           <div class="nav-text">
             <span class="nav-title">Media Library</span>
@@ -89,54 +89,54 @@
 
     <main class="main-content">
       <!-- Landing Page -->
-      <div class="landing" id="landing-page" style="padding: 5rem 3rem; text-align: center;">
+      <div class="landing" id="landing-page">
         <div class="landing-hero">
-          <div class="vibrant-text" id="welcome-message" style="font-size: 1.1rem; font-weight: 800; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.2em;">Platform Intelligence</div>
+          <div class="vibrant-text" style="font-size: 0.9rem; font-weight: 800; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 0.3em; opacity: 0.8;">Platform Intelligence</div>
           <h2 class="landing-title">Unified <span class="vibrant-text">Enterprise</span> Orchestration</h2>
           <p class="landing-desc">Construct, manage, and scale your digital experience with a modular, multi-framework microfrontend architecture.</p>
         </div>
 
-        <div id="session-status" style="margin-bottom: 5rem; display: flex; justify-content: center;">
-             <div class="module-card" style="display: inline-flex; align-items: center; gap: 1.25rem; padding: 1rem 2.5rem; border-radius: 99px; box-shadow: var(--shadow-md);">
+        <div id="session-status" style="margin-bottom: 6rem; display: flex; justify-content: center;">
+             <div class="module-card" style="display: inline-flex; align-items: center; gap: 1.25rem; padding: 1rem 3rem; border-radius: 99px; box-shadow: var(--shadow-md); background: white; border: 1px solid var(--border);">
                <div id="session-dot" style="width: 12px; height: 12px; border-radius: 50%; background: #94a3b8; box-shadow: 0 0 10px rgba(148, 163, 184, 0.4);"></div>
                <span id="session-text" style="font-weight: 700; font-size: 0.95rem; color: var(--text-muted); letter-spacing: -0.01em;">Awaiting authentication...</span>
              </div>
         </div>
 
-        <div class="module-grid" style="max-width: 1200px; margin: 0 auto 5rem;">
+        <div class="module-grid">
           <a href="/cms-root-orchestration/auth" class="module-card">
-            <div style="font-size: 2rem; margin-bottom: 1.5rem;">🔐</div>
+            <div style="font-size: 2.5rem; margin-bottom: 2rem;">🔐</div>
             <h3 class="module-title">Identity & Access</h3>
             <p class="module-desc">Enterprise-grade security and granular role management built with Angular.</p>
-            <span class="module-tag">Angular 11</span>
+            <span class="module-tag" style="background: #fff1f2; color: #e11d48; border-color: #fecdd3;">Angular 11</span>
           </a>
 
           <a href="/cms-root-orchestration/editorial" class="module-card">
-            <div style="font-size: 2rem; margin-bottom: 1.5rem;">📝</div>
+            <div style="font-size: 2.5rem; margin-bottom: 2rem;">📝</div>
             <h3 class="module-title">Editorial Suite</h3>
             <p class="module-desc">Dynamic content workflows and publishing orchestration powered by React.</p>
-            <span class="module-tag">React 17</span>
+            <span class="module-tag" style="background: #f0f9ff; color: #0ea5e9; border-color: #bae6fd;">React 17</span>
           </a>
 
           <a href="/cms-root-orchestration/collab" class="module-card">
-            <div style="font-size: 2rem; margin-bottom: 1.5rem;">💬</div>
+            <div style="font-size: 2.5rem; margin-bottom: 2rem;">💬</div>
             <h3 class="module-title">Team Collaboration</h3>
             <p class="module-desc">Real-time communication and activity tracking engine utilizing Svelte.</p>
-            <span class="module-tag">Svelte 3</span>
+            <span class="module-tag" style="background: #fef2f2; color: #ef4444; border-color: #fee2e2;">Svelte 3</span>
           </a>
 
           <a href="/cms-root-orchestration/media" class="module-card">
-            <div style="font-size: 2rem; margin-bottom: 1.5rem;">🖼️</div>
+            <div style="font-size: 2.5rem; margin-bottom: 2rem;">🖼️</div>
             <h3 class="module-title">Media Repository</h3>
             <p class="module-desc">High-performance digital asset management and delivery built on Vue.</p>
-            <span class="module-tag">Vue 2.6</span>
+            <span class="module-tag" style="background: #f0fdf4; color: #22c55e; border-color: #bbf7d0;">Vue 2.6</span>
           </a>
         </div>
       </div>
 
 
       <!-- Microfrontend Mounting Point -->
-      <div id="single-spa-container" style="padding: 0px; display: block;">
+      <div id="single-spa-container" style="display: none;">
         <template id="single-spa-layout">
           <single-spa-router base="/cms-root-orchestration">
             <main>
@@ -171,7 +171,8 @@
       let matched = false;
       navItems.forEach(item => {
         const itemPath = new URL(item.href, location.origin).pathname;
-        if (path === itemPath || (path.startsWith(itemPath) && itemPath !== '/cms-root-orchestration/')) {
+        // Exact match or sub-path match
+        if (path === itemPath || (path.startsWith(itemPath) && itemPath !== '/cms-root-orchestration' && itemPath !== '/cms-root-orchestration/')) {
           item.classList.add('active');
           matched = true;
         } else {
@@ -183,11 +184,7 @@
         if (landing) landing.style.display = 'none';
         if (container) {
           container.style.display = 'block';
-          container.style.opacity = '0';
-          setTimeout(() => {
-            container.style.transition = 'opacity 0.4s ease';
-            container.style.opacity = '1';
-          }, 50);
+          container.style.opacity = '1';
         }
       } else {
         if (landing) landing.style.display = 'block';
@@ -203,13 +200,17 @@
       const sideName = document.querySelector('.user-name');
 
       if (session) {
-        const user = JSON.parse(session);
-        if (dot) dot.style.background = '#10b981';
-        if (text) text.innerText = `Active Session: ${user.name} (${user.role})`;
-        if (sideName) sideName.innerText = user.name;
+        try {
+          const user = JSON.parse(session);
+          if (dot) dot.style.background = '#10b981';
+          if (text) text.innerText = `Active Session: ${user.name} (${user.role})`;
+          if (sideName) sideName.innerText = user.name;
+        } catch(e) {
+          localStorage.removeItem('cms_session');
+        }
       } else {
         if (dot) dot.style.background = '#94a3b8';
-        if (text) text.innerText = 'Please sign in to access full features';
+        if (text) text.innerText = 'Platform secured · Please sign in to access modules';
         if (sideName) sideName.innerText = 'Guest User';
       }
     }
@@ -235,8 +236,6 @@
     });
   </script>
 
-  <script>
-    System.import('/cms-root-orchestration/index.js');
-  </script>
+  <script src="/cms-root-orchestration/index.js"></script>
 </body>
 </html>

@@ -1,26 +1,38 @@
 import { registerApplication, start, LifeCycles } from "single-spa";
 import { constructApplications, constructRoutes, constructLayoutEngine } from "single-spa-layout";
-import layout from "./root-config";
 
+// Initialize single-spa-layout
 const layoutElement = document.getElementById('single-spa-layout') as HTMLTemplateElement;
-const routes = constructRoutes(layoutElement as any);
+
+if (!layoutElement) {
+  console.error('Single-SPA layout template not found!');
+}
+
+const routes = constructRoutes(layoutElement);
 const applications = constructApplications({
   routes,
-  loadApp: ({ name }: { name: string }) => System.import(name) as Promise<LifeCycles>
+  loadApp: ({ name }: { name: string }) => {
+    console.log(`[Shell] Loading MFE: ${name}`);
+    return System.import(name) as Promise<LifeCycles>;
+  }
 });
+
 const layoutEngine = constructLayoutEngine({ 
   routes, 
   applications, 
   active: true 
 });
 
+// Sync UI state before starting
+window.addEventListener('single-spa:before-routing-event', () => {
+  const container = document.getElementById('single-spa-container');
+  if (container) {
+    container.style.opacity = '0';
+  }
+});
+
 applications.forEach(registerApplication);
 layoutEngine.activate();
-
-const singleSpaMain = document.querySelector('body > main');
-const container = document.getElementById('single-spa-container');
-if (singleSpaMain && container) {
-  container.appendChild(singleSpaMain);
-}
-
 start();
+
+console.log('[Shell] Microfrontend orchestration initialized');
