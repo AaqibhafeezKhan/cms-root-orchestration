@@ -87,8 +87,9 @@
       </div>
     </aside>
 
-    <main class="main-content" id="single-spa-container">
-      <div class="landing" id="landing-page">
+    <main class="main-content">
+      <!-- Landing Page -->
+      <div class="landing" id="landing-page" style="padding: 3rem;">
         <div class="landing-hero">
           <div class="vibrant-text" id="welcome-message" style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem;">Platform Hub</div>
           <h2 class="landing-title">Enterprise <span class="vibrant-text">Orchestration</span></h2>
@@ -103,7 +104,6 @@
         </div>
 
         <div class="module-grid">
-          <!-- Cards remain same but styling is handled by CSS -->
           <a href="/cms-root-orchestration/auth" class="module-card">
             <h3 class="module-title">Identity</h3>
             <p class="module-desc">Role management and security orchestration layer.</p>
@@ -129,8 +129,28 @@
           </a>
         </div>
       </div>
+
+      <!-- Microfrontend Mounting Point -->
+      <div id="single-spa-container"></div>
     </main>
   </div>
+
+  <template id="single-spa-layout">
+    <single-spa-router base="/cms-root-orchestration">
+      <route path="auth">
+        <application name="cms-angular-auth"></application>
+      </route>
+      <route path="editorial">
+        <application name="cms-react-editorial"></application>
+      </route>
+      <route path="collab">
+        <application name="cms-svelte-collab"></application>
+      </route>
+      <route path="media">
+        <application name="cms-vue-media"></application>
+      </route>
+    </single-spa-router>
+  </template>
 
   <script>
     function setActive(el) {
@@ -181,9 +201,11 @@
       const matchedId = map[path];
       if (matchedId) {
         setActiveById(matchedId);
-      } else if (path === '/cms-root-orchestration/' || path === '/cms-root-orchestration') {
+        document.getElementById('landing-page').style.display = 'none';
+        document.getElementById('single-spa-container').style.display = 'block';
+      } else {
         document.getElementById('landing-page').style.display = 'block';
-        document.getElementById('single-spa-container').style.padding = '3rem';
+        document.getElementById('single-spa-container').style.display = 'none';
         document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
       }
     }
@@ -194,10 +216,13 @@
     // Intercept clicks for single-spa navigation
     document.addEventListener('click', (e) => {
       const link = e.target.closest('a');
-      if (link && link.href.includes('/cms-root-orchestration/')) {
-        e.preventDefault();
-        history.pushState(null, '', link.href);
-        handleActiveNav();
+      if (link && link.href.includes('/cms-root-orchestration')) {
+        const url = new URL(link.href);
+        if (url.origin === location.origin) {
+          e.preventDefault();
+          history.pushState(null, '', link.href);
+          handleActiveNav();
+        }
       }
     });
   </script>
