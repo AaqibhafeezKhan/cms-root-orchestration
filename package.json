@@ -11,21 +11,22 @@
     "build": "webpack --mode production"
   },
   "dependencies": {
+    "puppeteer": "^24.41.0",
     "single-spa": "^5.9.3",
     "single-spa-layout": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.8",
     "@babel/preset-env": "^7.25.8",
+    "@babel/preset-typescript": "^7.21.0",
+    "@types/node": "^20.0.0",
+    "@types/systemjs": "^6.1.1",
     "babel-loader": "^8.4.1",
     "gh-pages": "^6.2.0",
     "html-webpack-plugin": "^5.3.1",
+    "typescript": "^5.0.0",
     "webpack": "^5.24.3",
     "webpack-cli": "^4.5.0",
-    "webpack-dev-server": "^3.11.2",
-    "typescript": "^5.0.0",
-    "@babel/preset-typescript": "^7.21.0",
-    "@types/systemjs": "^6.1.1",
-    "@types/node": "^20.0.0"
+    "webpack-dev-server": "^3.11.2"
   }
 }

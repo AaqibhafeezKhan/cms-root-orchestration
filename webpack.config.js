@@ -7,6 +7,7 @@ module.exports = {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/cms-root-orchestration/',
+    libraryTarget: 'system',
   },
   resolve: {
     extensions: ['.ts', '.js'],
