@@ -1,10 +1,10 @@
 {
   "version": 2,
   "rewrites": [
+    { "source": "/auth/(.*)", "destination": "/index.html" },
     { "source": "/editorial/(.*)", "destination": "/index.html" },
-    { "source": "/media-library/(.*)", "destination": "/index.html" },
-    { "source": "/role-access/(.*)", "destination": "/index.html" },
-    { "source": "/real-time-editor/(.*)", "destination": "/index.html" },
+    { "source": "/collab/(.*)", "destination": "/index.html" },
+    { "source": "/media/(.*)", "destination": "/index.html" },
     { "source": "/(.*)", "destination": "/$1" }
   ],
   "headers": [
