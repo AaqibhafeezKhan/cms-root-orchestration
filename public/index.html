@@ -89,46 +89,51 @@
 
     <main class="main-content">
       <!-- Landing Page -->
-      <div class="landing" id="landing-page" style="padding: 3rem;">
+      <div class="landing" id="landing-page" style="padding: 5rem 3rem; text-align: center;">
         <div class="landing-hero">
-          <div class="vibrant-text" id="welcome-message" style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem;">Platform Hub</div>
-          <h2 class="landing-title">Enterprise <span class="vibrant-text">Orchestration</span></h2>
-          <p class="landing-desc">Unified control center for Auth, Editorial, Collaboration, and Media management.</p>
+          <div class="vibrant-text" id="welcome-message" style="font-size: 1.1rem; font-weight: 800; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.2em;">Platform Intelligence</div>
+          <h2 class="landing-title">Unified <span class="vibrant-text">Enterprise</span> Orchestration</h2>
+          <p class="landing-desc">Construct, manage, and scale your digital experience with a modular, multi-framework microfrontend architecture.</p>
         </div>
 
-        <div id="session-status" style="margin-bottom: 3rem; text-align: center;">
-             <div class="module-card" style="display: inline-flex; align-items: center; gap: 1rem; padding: 1rem 2rem;">
-               <div id="session-dot" style="width: 10px; height: 10px; border-radius: 50%; background: #94a3b8;"></div>
-               <span id="session-text" style="font-weight: 600; font-size: 0.9rem; color: var(--text-muted);">Please sign in to access full features</span>
+        <div id="session-status" style="margin-bottom: 5rem; display: flex; justify-content: center;">
+             <div class="module-card" style="display: inline-flex; align-items: center; gap: 1.25rem; padding: 1rem 2.5rem; border-radius: 99px; box-shadow: var(--shadow-md);">
+               <div id="session-dot" style="width: 12px; height: 12px; border-radius: 50%; background: #94a3b8; box-shadow: 0 0 10px rgba(148, 163, 184, 0.4);"></div>
+               <span id="session-text" style="font-weight: 700; font-size: 0.95rem; color: var(--text-muted); letter-spacing: -0.01em;">Awaiting authentication...</span>
              </div>
         </div>
 
-        <div class="module-grid">
+        <div class="module-grid" style="max-width: 1200px; margin: 0 auto 5rem;">
           <a href="/cms-root-orchestration/auth" class="module-card">
-            <h3 class="module-title">Identity</h3>
-            <p class="module-desc">Role management and security orchestration layer.</p>
-            <span class="module-tag">Angular</span>
+            <div style="font-size: 2rem; margin-bottom: 1.5rem;">🔐</div>
+            <h3 class="module-title">Identity & Access</h3>
+            <p class="module-desc">Enterprise-grade security and granular role management built with Angular.</p>
+            <span class="module-tag">Angular 11</span>
           </a>
 
           <a href="/cms-root-orchestration/editorial" class="module-card">
-            <h3 class="module-title">Editorial</h3>
-            <p class="module-desc">Dynamic content lifecycle and publishing toolset.</p>
-            <span class="module-tag">React</span>
+            <div style="font-size: 2rem; margin-bottom: 1.5rem;">📝</div>
+            <h3 class="module-title">Editorial Suite</h3>
+            <p class="module-desc">Dynamic content workflows and publishing orchestration powered by React.</p>
+            <span class="module-tag">React 17</span>
           </a>
 
           <a href="/cms-root-orchestration/collab" class="module-card">
-            <h3 class="module-title">Collaboration</h3>
-            <p class="module-desc">Real-time team communication and activity tracking.</p>
-            <span class="module-tag">Svelte</span>
+            <div style="font-size: 2rem; margin-bottom: 1.5rem;">💬</div>
+            <h3 class="module-title">Team Collaboration</h3>
+            <p class="module-desc">Real-time communication and activity tracking engine utilizing Svelte.</p>
+            <span class="module-tag">Svelte 3</span>
           </a>
 
           <a href="/cms-root-orchestration/media" class="module-card">
-            <h3 class="module-title">Media</h3>
-            <p class="module-desc">Digital asset repository and delivery network.</p>
-            <span class="module-tag">Vue</span>
+            <div style="font-size: 2rem; margin-bottom: 1.5rem;">🖼️</div>
+            <h3 class="module-title">Media Repository</h3>
+            <p class="module-desc">High-performance digital asset management and delivery built on Vue.</p>
+            <span class="module-tag">Vue 2.6</span>
           </a>
         </div>
       </div>
+
 
       <!-- Microfrontend Mounting Point -->
       <div id="single-spa-container" style="padding: 0px; display: block;">
