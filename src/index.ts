@@ -1,3 +1,4 @@
+// Root bootstrapping logic for single-spa orchestration
 import { registerApplication, start, LifeCycles } from "single-spa";
 import { constructApplications, constructRoutes, constructLayoutEngine } from "single-spa-layout";
 import layout from "./root-config";
