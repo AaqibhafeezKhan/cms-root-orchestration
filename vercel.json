@@ -1,17 +1,31 @@
 {
   "version": 2,
+  "public": true,
   "rewrites": [
-    { "source": "/auth/(.*)", "destination": "/index.html" },
-    { "source": "/editorial/(.*)", "destination": "/index.html" },
-    { "source": "/collab/(.*)", "destination": "/index.html" },
-    { "source": "/media/(.*)", "destination": "/index.html" },
-    { "source": "/(.*)", "destination": "/$1" }
+    { "source": "/cms-root-orchestration/auth/:path*", "destination": "/index.html" },
+    { "source": "/cms-root-orchestration/editorial/:path*", "destination": "/index.html" },
+    { "source": "/cms-root-orchestration/collab/:path*", "destination": "/index.html" },
+    { "source": "/cms-root-orchestration/media/:path*", "destination": "/index.html" },
+    { "source": "/cms-root-orchestration/:path*", "destination": "/index.html" },
+    { "source": "/auth/:path*", "destination": "/index.html" },
+    { "source": "/editorial/:path*", "destination": "/index.html" },
+    { "source": "/collab/:path*", "destination": "/index.html" },
+    { "source": "/media/:path*", "destination": "/index.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "Access-Control-Allow-Origin", "value": "*" }
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET, POST, PUT, DELETE, OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type, Authorization" }
+      ]
+    },
+    {
+      "source": "/index.js",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=300, must-revalidate" }
       ]
     }
   ]
