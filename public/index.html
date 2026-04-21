@@ -37,7 +37,11 @@
   <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleMobileMenu()"></div>
   <button class="mobile-nav-toggle" id="mobile-toggle" onclick="toggleMobileMenu()">☰</button>
 
-  <div class="app-shell">
+  <div class="app-shell" id="app-shell">
+    <!-- Sidebar Toggle Button (Desktop Only) -->
+    <button class="sidebar-toggle" id="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">
+      <span class="sidebar-toggle-icon">◀</span>
+    </button>
 
     <aside class="sidebar" id="app-sidebar">
       <a href="/cms-root-orchestration/" class="sidebar-logo">
@@ -215,6 +219,19 @@
         if (text) text.innerText = 'Platform secured · Please sign in to access modules';
         if (sideName) sideName.innerText = 'Guest User';
       }
+    }
+
+    // Sidebar Toggle Logic (Desktop)
+    function toggleSidebar() {
+      const appShell = document.getElementById('app-shell');
+      appShell.classList.toggle('sidebar-collapsed');
+      localStorage.setItem('cms_sidebar_collapsed', appShell.classList.contains('sidebar-collapsed'));
+    }
+
+    // Restore sidebar state
+    const sidebarCollapsed = localStorage.getItem('cms_sidebar_collapsed') === 'true';
+    if (sidebarCollapsed) {
+      document.getElementById('app-shell').classList.add('sidebar-collapsed');
     }
 
     // Mobile Menu Logic
